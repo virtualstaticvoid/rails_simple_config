@@ -1,0 +1,65 @@
+##
+# Configuration settings for use by the Rails application
+# Made available via the SimpleConfig global class
+# Use for settings such as mail server configurations, Amazon keys and secrets etc...
+# You can use ERB too
+#
+
+##
+# Define shared settings
+#
+shared: &shared
+
+  # application settings
+  title: Example
+  description: 
+  keywords: 
+  version:
+
+  # url settings
+  scheme: http
+  domain: example.com
+
+  # mail settings
+  smtp_domain: www.example.com
+  smtp_server: 
+  smtp_user_name:
+  smtp_password:
+
+  # email addresses
+  info_email: info@example.com
+  no_reply_email: noreply@example.com
+  support_email: support@example.com
+  
+##
+# Define settings per Rails environment, 
+# provide overrides to the shared settings as needed
+#
+development:
+  # inherit shared settings
+  <<: *shared
+  
+  # url settings
+  subdomain: dev
+  domain: localhost:3000
+  
+  # mail setting (for mailcatcher)
+  smtp_server: localhost
+  smtp_port: 1025
+
+test:
+  # inherit shared settings
+  <<: *shared
+
+  # url settings
+  subdomain: test
+
+production:
+  # inherit shared settings
+  <<: *shared
+
+  # url settings
+  subdomain: www
+
+
+
