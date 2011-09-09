@@ -32,6 +32,10 @@ module SimpleConfig
     @@config.load!
   end
   
+  def self.reload!
+    @@config.reload!
+  end
+
   def self.method_missing(method, *args)
     @@config.__send__(method, *args)
   end
