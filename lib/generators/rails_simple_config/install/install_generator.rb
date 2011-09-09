@@ -4,6 +4,8 @@ module RailsSimpleConfig
     
     def copy_files
       template "config.yml", "./config.yml"
+      template "secrets.yml", "./secrets.yml"
+      template "secrets.yml", "./secrets.example.yml"
     end
   
   end

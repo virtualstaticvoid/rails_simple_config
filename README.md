@@ -13,12 +13,20 @@ Add RailsSimpleConfig to your Gemfile:
 Run the generator to create the default configuration file:
 
     rails generate rails_simple_config:install
+    
+The generator will create 3 files in your Rails root directory; namely `secrets.yml`, `secrets.example.yml` and `config.yml`. 
+
+The `secrets.yml` should _not_ be committed to source control, and it should be used to keep settings which are 
+considered a secret; such as your Amazon credentials. These settings will be loaded first. The `secrets.example.yml` filename
+can be added to source control and kept as an _example_ of the settings contained in the `secrets.yml` file.
+
+The `config.yml` file should contain all other configuration settings.
 
 ## Usage
 
 ### Define configuration settings
 
-Define your settings in the generated `config.yml` file, found in your Rails root directory. 
+Define your settings in the generated `secrets.yml` and `config.yml` file, found in your Rails root directory. 
 
 The file contains sections for the development, test and production Rails environments, and a shared section.
 It can also contain ERB code so that more advanced configuration scenarios can be supported.
@@ -94,6 +102,9 @@ For example, the `SimpleConfig.no_reply_email` will be accessible to the [devise
 ### Notes
 
 `SimpleConfig` inherits from [ActiveSupport::OrderedOptions](http://api.rubyonrails.org/classes/ActiveSupport/OrderedOptions.html), so accessing undefined settings will always return `nil`.
+
+In development, the configuration is reloaded upon each request, however, any configuration used within the `application.rb` filename
+or any initializers will _not_ be automatically reloaded, without having to restart your web server.
 
 ## Project Info
 
