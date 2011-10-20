@@ -1,5 +1,5 @@
 Description:
-  Creates the default configuration file (config.yml) in the project root directory.
+  Creates the default configuration file (config.yml) in the project config directory.
   
 Example:
   `rails generate rails_simple_config:install`

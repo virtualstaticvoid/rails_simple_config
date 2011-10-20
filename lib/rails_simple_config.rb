@@ -10,8 +10,8 @@ module SimpleConfig
 
     def load!
       puts "Loading configuration for '#{Rails.env}'."
-      load_file(Rails.root + 'secrets.yml')
-      load_file(Rails.root + 'config.yml')
+      load_file File.join(Rails.root, 'config', 'secrets.yml')
+      load_file File.join(Rails.root, 'config', 'config.yml')
     end
     
     def reload!
