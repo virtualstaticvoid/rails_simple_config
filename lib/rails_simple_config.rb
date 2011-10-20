@@ -23,7 +23,7 @@ module SimpleConfig
     
     def load_file(filename)
       if File.exist?(filename)
-        configuration = YAML.load(ERB.new(File.read(filename)).result)[Rails.env]
+        configuration = YAML.load(ERB.new(File.read(filename)).result(binding))[Rails.env]
         configuration.each do |key, value|
           self.__send__("#{key}=", value)
         end if configuration
