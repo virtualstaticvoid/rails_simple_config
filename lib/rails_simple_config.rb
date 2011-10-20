@@ -48,3 +48,5 @@ module SimpleConfig
 
 end
 
+# alias to support using AppConfig global
+AppConfig = SimpleConfig
