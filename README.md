@@ -14,11 +14,17 @@ Run the generator to create the default configuration file:
 
     rails generate rails_simple_config:install
     
-The generator will create 3 files in your Rails `config` directory; namely `secrets.yml`, `secrets.example.yml` and `config.yml`. 
+The generator will create 3 files in your Rails `config` directory, nemely:
 
-The `secrets.yml` should _not_ be committed to source control, and it should be used to keep settings which are 
-considered a secret; such as your Amazon credentials. These settings will be loaded first. The `secrets.example.yml` filename
-can be added to source control and kept as an _example_ of the settings contained in the `secrets.yml` file.
+* `secrets.yml`
+* `secrets.example.yml`
+* `config.yml`
+
+The `secrets.yml` should _not_ be committed to source control. It should be used to keep settings which are 
+considered a secret; such as your Amazon credentials. It is loaded first.
+
+The `secrets.example.yml` file can be added to source control and should serve as an _example_ of the settings 
+contained in the `secrets.yml` file.
 
 The `config.yml` file should contain all other configuration settings.
 
@@ -26,21 +32,25 @@ The `config.yml` file should contain all other configuration settings.
 
 ### Define configuration settings
 
-Define your settings in the generated `secrets.yml` and `config.yml` file, found in your Rails `config` directory. 
+Define your settings in the generated `secrets.yml` and `config.yml` files, found in your Rails `config` directory. 
 
-The file contains sections for the development, test and production Rails environments, and a shared section.
+Both files contains a shared section and sections with overrides for the development, test and production Rails environments.
 It can also contain ERB code so that more advanced configuration scenarios can be supported.
 
     # example configuration
     
     shared: &shared
+
       title: My Website Title
       description: Meta description of the site
       keywords: Meta keywords for search engines
       
       no_reply_email: noreply@example.com
+
+      dynamic_setting: <%= 30 * 60 %>
       
     development:
+
       # inherit shared settings
       <<: *shared
       
@@ -52,6 +62,7 @@ It can also contain ERB code so that more advanced configuration scenarios can b
       mail_prefix: DEV -
     
     production:
+
       # inherit shared settings
       <<: *shared
       
@@ -63,7 +74,7 @@ It can also contain ERB code so that more advanced configuration scenarios can b
 
 ### Access configuration settings
 
-To access configuration settings in your Rails application, use the `SimpleConfig` global module.
+To access configuration settings in your Rails application, use the `SimpleConfig` global or the `AppConfig` alias for it.
 
 For example, in your application layout:
 
@@ -83,8 +94,8 @@ For example, in your application layout:
       </body>
     </html>          
 
-In addition, unlike other Rails configuration solutions, `SimpleConfig` is available to the development, test and production configurations, initializers and routes during startup.
-It can be used as a replacement for environment variables; thus making your setup much cleaner.
+In addition, unlike other Rails configuration solutions, `SimpleConfig` is available to the Rails development, test and production environment configuration files, 
+initializers and routes during startup. It can be used as a replacement for environment variables; thus making your setup much cleaner.
 
 For example, the `SimpleConfig.no_reply_email` will be accessible to the [devise](https://github.com/plataformatec/devise) initializer when configuring `mailer_sender`:
 
@@ -103,7 +114,7 @@ For example, the `SimpleConfig.no_reply_email` will be accessible to the [devise
 
 `SimpleConfig` inherits from [ActiveSupport::OrderedOptions](http://api.rubyonrails.org/classes/ActiveSupport/OrderedOptions.html), so accessing undefined settings will always return `nil`.
 
-In development, the configuration is reloaded upon each request, however, any configuration used within the `application.rb` filename
+In development, the configuration is reloaded upon each request, however, any configuration used within the `application.rb` file
 or any initializers will _not_ be automatically reloaded, without having to restart your web server.
 
 ## Project Info
