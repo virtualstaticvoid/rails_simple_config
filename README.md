@@ -10,11 +10,11 @@ Add RailsSimpleConfig to your Gemfile:
 
     gem 'rails_simple_config'
 
-Run the generator to create the default configuration file:
+Run the generator to create the default configuration files:
 
     rails generate rails_simple_config:install
     
-The generator will create 3 files in your Rails `config` directory, nemely:
+The generator will create 3 files in your Rails `config` directory, namely:
 
 * `secrets.yml`
 * `secrets.example.yml`
@@ -34,7 +34,7 @@ The `config.yml` file should contain all other configuration settings.
 
 Define your settings in the generated `secrets.yml` and `config.yml` files, found in your Rails `config` directory. 
 
-Both files contains a shared section and sections with overrides for the development, test and production Rails environments.
+Both files contain a shared section and sections with overrides for the respective development, test and production Rails environments.
 It can also contain ERB code so that more advanced configuration scenarios can be supported.
 
     # example configuration
@@ -95,7 +95,7 @@ For example, in your application layout:
     </html>          
 
 In addition, unlike other Rails configuration solutions, `SimpleConfig` is available to the Rails development, test and production environment configuration files, 
-initializers and routes during startup. It can be used as a replacement for environment variables; thus making your setup much cleaner.
+initializers and routes during startup. It can be used as a replacement for environment variables; thus making your setup and code much cleaner.
 
 For example, the `SimpleConfig.no_reply_email` will be accessible to the [devise](https://github.com/plataformatec/devise) initializer when configuring `mailer_sender`:
 
@@ -112,10 +112,10 @@ For example, the `SimpleConfig.no_reply_email` will be accessible to the [devise
 
 ### Notes
 
-`SimpleConfig` inherits from [ActiveSupport::OrderedOptions](http://api.rubyonrails.org/classes/ActiveSupport/OrderedOptions.html), so accessing undefined settings will always return `nil`.
+`SimpleConfig` makes use of the [ActiveSupport::OrderedOptions](http://api.rubyonrails.org/classes/ActiveSupport/OrderedOptions.html) class, so accessing undefined settings will always return `nil`.
 
-In development, the configuration is reloaded upon each request, however, any configuration used within the `application.rb` file
-or any initializers will _not_ be automatically reloaded, without having to restart your web server.
+In development, the configuration is reloaded upon each request, however, any configuration used within the `application.rb` file and initializers 
+will _not_ be automatically reloaded, without having to restart your web server.
 
 ## Project Info
 
