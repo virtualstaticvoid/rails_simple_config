@@ -1,5 +1,7 @@
 # Rails Simple Config
 
+[![Gem Version](https://badge.fury.io/rb/rails_simple_config.png)](http://badge.fury.io/rb/rails_simple_config)
+
 A simple YAML based configuration for Ruby on Rails 3+, which supports shared settings, ERB and more.
 
 Inspired in part by the database configuration in Rails, [app_config](https://github.com/die-antwort/app_config) and [rails_config](https://github.com/railsjedi/rails_config).
