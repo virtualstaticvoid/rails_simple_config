@@ -4,8 +4,8 @@ require "rails_simple_config/version"
 
 Gem::Specification.new do |s|
   s.name        = "rails_simple_config"
-  s.summary     = %q{Simple YAML based configuration gem for Rails 3+}
-  s.description = %q{A simple YAML based configuration for Ruby on Rails 3+, which supports shared settings, ERB and more.}
+  s.summary     = %q{Simple YAML based configuration gem for Rails}
+  s.description = %q{A simple YAML based configuration for Ruby on Rails, which supports shared settings, ERB and more.}
 
   s.authors     = ["Chris Stefano"]
   s.email       = ["virtualstaticvoid@gmail.com"]
