@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_simple_config (0.0.5)
+    rails_simple_config (0.0.6)
 
 GEM
   remote: http://rubygems.org/
@@ -12,3 +12,6 @@ PLATFORMS
 
 DEPENDENCIES
   rails_simple_config!
+
+BUNDLED WITH
+   1.17.1
