@@ -14,4 +14,4 @@ DEPENDENCIES
   rails_simple_config!
 
 BUNDLED WITH
-   1.17.3
+   2.2.31
