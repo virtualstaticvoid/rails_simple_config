@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_simple_config (0.0.7)
+    rails_simple_config (0.0.8)
 
 GEM
   remote: http://rubygems.org/
